@@ -1,13 +1,9 @@
-FROM node:16
+FROM node:14.16-alpine
 
-WORKDIR /app
+RUN yarn global add nodemon
+WORKDIR /src
+ADD /userapi/package*.json ./
+RUN yarn install
+COPY ./userapi .
 
-COPY /userapi/package*.json ./
-
-RUN npm install
-
-COPY /userapi .
-
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+CMD ["node", "index.js"]
