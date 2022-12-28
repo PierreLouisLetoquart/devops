@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    server: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      server: redis
+  template:
+    metadata:
+      labels:
+        server: redis
+    spec:
+      volumes:
+        - name: vol-dev
+          persistentVolumeClaim:
+            claimName: task-pv-claim
+      containers:
+        - name: redis
+          image: redis:6.2-alpine
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: /redisData
+              name: vol-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  selector:
+    server: redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
