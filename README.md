@@ -1,4 +1,4 @@
-# README with report and screenshots
+# DevOps Project
 
 Author : KARDOUS Kilan / LETOQUART Pierre-Louis
 
@@ -34,10 +34,6 @@ $ npm start
 # run the tests
 $ npm test
 ```
-
-By using : "npm start", we have the app on the web :
-
-![npmstart](/images/npmstart.png)
 
 By using : "npm test", we have all the tests :
 
@@ -104,14 +100,14 @@ To ensure that the application runs correctly, we need to orchestrate it with a 
 
 ```bash
 # tag container
-$ docker tag ece-devops-image pierrolobogo/ece-devops-image
+$ docker tag ece-devops-image pierrolobogo/ece-webapp-pl-kilan
 # login with docker
 $ docker login
 # push the image on docker hub
-$ docker push pierrolobogo/ece-devops-image
+$ docker push pierrolobogo/ece-webapp-pl-kilan
 ```
 
-![dockerpush](/images/dockerpush.jpeg)
+![dockerpush](/images/dockerpush.png)
 
 Here we can see that the push on docker hub works :
 
@@ -191,7 +187,7 @@ $ kubectl get pods
 
 ![k8spersist2](/images/k8spersist2.jpeg)
 
-In this screen we can see that the Persistent volume and the Persistent volume claim are linked :
+In this screengit we can see that the Persistent volume and the Persistent volume claim are linked :
 
 ![k8sgetpv](/images/k8sgetpv.jpeg)
 
